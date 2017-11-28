@@ -1,4 +1,10 @@
 <?php include("includes/header.php"); ?>
+<?php if(!$session->is_signed_in()){redirect("login.php");} ?>
+<?php
+$photos = Photo::find_all();
+
+?>
+
 
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -38,13 +44,16 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php foreach ($photos as $photo) : ?>
                                 <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <!--<td> <img src="http://via.placeholder.com/140x100" alt=""></td>-->
+                                    <td> <img src="images/NextChallenge2.jpg" width="100" height="62" alt=""></td>
+                                    <td><?php echo $photo->get_id(); ?></td>
+                                    <td><?php echo $photo->get_filename(); ?></td>
+                                    <td><?php echo $photo->get_title(); ?></td>
+                                    <td><?php echo $photo->get_size(); ?></td>
                                 </tr>
+                                <?php endforeach; ?>
 
 
                             </tbody>
