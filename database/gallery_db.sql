@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 26, 2017 at 06:47 AM
+-- Generation Time: Nov 28, 2017 at 05:26 AM
 -- Server version: 5.7.19
 -- PHP Version: 5.6.31
 
@@ -31,20 +31,20 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `photos`;
 CREATE TABLE IF NOT EXISTS `photos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `description` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `filename` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `type` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `size` int(11) NOT NULL,
+  `title` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `description` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `filename` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `type` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `size` int(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=50 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `photos`
 --
 
 INSERT INTO `photos` (`id`, `title`, `description`, `filename`, `type`, `size`) VALUES
-(1, 'Landscape', 'This is the first image inserted manually to the database', 'land.jpg', 'image', 11),
+(1, 'Just some test title', 'Another test description', '', 'png', 20),
 (2, 'Just some test title', 'Another test description', '', 'png', 20),
 (3, 'Just some test title', 'Another test description', '', 'png', 20),
 (4, 'Just some test title', 'Another test description', '', 'png', 20),
@@ -79,20 +79,7 @@ INSERT INTO `photos` (`id`, `title`, `description`, `filename`, `type`, `size`) 
 (33, 'Just some test title', 'Another test description', '', 'png', 20),
 (34, 'Just some test title', 'Another test description', '', 'png', 20),
 (35, 'Just some test title', 'Another test description', '', 'png', 20),
-(36, 'Just some test title', 'Another test description', '', 'png', 20),
-(37, 'Just some test title', 'Another test description', '', 'png', 20),
-(38, 'Just some test title', 'Another test description', '', 'png', 20),
-(39, 'Just some test title', 'Another test description', '', 'png', 20),
-(40, 'Just some test title', 'Another test description', '', 'png', 20),
-(41, 'Just some test title', 'Another test description', '', 'png', 20),
-(42, 'Just some test title', 'Another test description', '', 'png', 20),
-(43, 'Just some test title', 'Another test description', '', 'png', 20),
-(44, 'Just some test title', 'Another test description', '', 'png', 20),
-(45, 'Just some test title', 'Another test description', '', 'png', 20),
-(46, 'Just some test title', 'Another test description', '', 'png', 20),
-(47, 'Just some test title', 'Another test description', '', 'png', 20),
-(48, 'Just some test title', 'Another test description', '', 'png', 20),
-(49, 'Just some test title', 'Another test description', '', 'png', 20);
+(36, 'Next Challenge', '', 'NextChallenge2.jpg', 'image/jpeg', 93923);
 
 -- --------------------------------------------------------
 
@@ -103,50 +90,22 @@ INSERT INTO `photos` (`id`, `title`, `description`, `filename`, `type`, `size`) 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `password` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `first_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `last_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `username` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `first_name` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `last_name` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `first_name`, `last_name`) VALUES
-(1, 'rico', '123', 'John', 'Doe'),
-(2, 'superman', '1234', 'Klark', 'Kent'),
-(3, 'spiderman', '1234', 'Peter', 'Louis'),
-(4, 'JustUpdated', '', '', ''),
-(10, 'Ant-Man', '1234', 'Scott', 'Lang'),
-(8, 'ClaraJ', '12345', 'Clara', 'Jones'),
-(9, 'ClaraM', '12345', 'Clara', 'Mones'),
-(11, 'Phoenix', '1234', 'Jean', 'Grey-Summers'),
-(12, 'JustUpdated', '1234', 'Jean', 'Grey-Summers'),
-(13, 'JustUpdated', '', '', ''),
-(14, 'Phoenix', '1234', 'Jean', 'Grey-Summers'),
-(15, 'Phoenix', '1234', 'Jean', 'Grey-Summers'),
-(16, 'JustUpdated', '1234', 'Jean', 'Grey-Summers'),
-(17, 'JustUpdated', '1234', 'Jean', 'Grey-Summers'),
-(18, 'Phoenix', '1234', 'Jean', 'Grey-Summers'),
-(19, 'Phoenix', '1234', 'Jean', 'Grey-Summers'),
-(20, 'Phoenix', '1234', 'Jean', 'Grey-Summers'),
-(21, 'JustUpdated', '1234', 'Jean', 'Grey-Summers'),
-(22, 'JustUpdated', '1234', 'Jean', 'Grey-Summers'),
-(23, 'JustUpdated', '', '', ''),
-(24, 'JustUpdated', '', '', ''),
-(25, 'JustUpdated', '', '', ''),
-(26, 'JustUpdated', '', '', ''),
-(27, 'JustUpdated', '', '', ''),
-(28, 'Phoenix', '1234', 'Jean', 'Grey-Summers'),
-(29, 'Phoenix', '1234', 'Jean', 'Grey-Summers'),
-(30, 'JustUpdated', '', '', ''),
-(31, 'Phoenix', '1234', 'Jean', 'Grey-Summers'),
-(32, 'Phoenix', '1234', 'Jean', 'Grey-Summers'),
-(33, 'JustUpdated', '1234', 'Jean', 'Grey-Summers'),
-(34, 'JustUpdated', '1234', 'Jean', 'Grey-Summers'),
-(35, 'JustUpdated', '1234', 'Jean', 'Grey-Summers');
+(1, 'superman', '123', 'Clark', 'Kent'),
+(2, 'superman', '123', 'Clark', 'Kent'),
+(3, 'mizi', '123', 'elad', 'ron'),
+(4, 'mizi', '123', 'elad', 'ron');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
