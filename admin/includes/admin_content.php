@@ -37,14 +37,14 @@
            foreach ($photos as $photo) {
                echo "<h4>" . $photo->get_description(). "</h4>";
            }*/
-
+/*
            $photo = new Photo();
            $photo->set_title("Just some test title");
            $photo->set_size(20);
            $photo->set_description("Another test description");
            $photo->set_type("png");
 
-           $photo->create();
+           $photo->create();*/
 
 
 

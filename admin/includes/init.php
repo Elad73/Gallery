@@ -7,8 +7,8 @@
  */
 
 defined('DS') ? null : define('DS', DIRECTORY_SEPARATOR);
-defined('SITE_ROOT') ? null : define('SITE_ROOT', 'C:' . DS . 'wamp64' . DS . 'www' . DS . 'udemy' . DS . 'udemy_oop' . DS . 'gallery');
-defined('INCLUDE_PATH') ? null : define('INCLUDE_PATH', 'C:' . DS . 'wamp64' . DS . 'www' . DS . 'udemy' . DS . 'udemy_oop' . DS . 'gallery' . DS . 'admin' . DS . 'includes');
+defined('SITE_ROOT') ? null : define('SITE_ROOT', 'E:' . DS . 'Development_projects' . DS . 'wamp64' . DS . 'www' . DS . 'udemy' . DS . 'udemy_oop' . DS . 'gallery');
+defined('INCLUDE_PATH') ? null : define('INCLUDE_PATH', 'E:' . DS . 'Development_projects' . DS . 'wamp64' . DS . 'www' . DS . 'udemy' . DS . 'udemy_oop' . DS . 'gallery' . DS . 'admin' . DS . 'includes');
 
 
 require_once("functions.php");
