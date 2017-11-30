@@ -40,6 +40,7 @@ $photos = Photo::find_all();
                                     <th>Id</th>
                                     <th>File Name</th>
                                     <th>Title</th>
+                                    <th>Description</th>
                                     <th>Size</th>
                                 </tr>
                             </thead>
@@ -47,10 +48,11 @@ $photos = Photo::find_all();
                                 <?php foreach ($photos as $photo) : ?>
                                 <tr>
                                     <!--<td> <img src="http://via.placeholder.com/140x100" alt=""></td>-->
-                                    <td> <img src="images/NextChallenge2.jpg" width="100" height="62" alt=""></td>
+                                    <td> <img src="<?php echo $photo->get_src(); ?>" width="100" height="62" alt=""></td>
                                     <td><?php echo $photo->get_id(); ?></td>
                                     <td><?php echo $photo->get_filename(); ?></td>
                                     <td><?php echo $photo->get_title(); ?></td>
+                                    <td><?php echo $photo->get_description(); ?></td>
                                     <td><?php echo $photo->get_size(); ?></td>
                                 </tr>
                                 <?php endforeach; ?>

@@ -6,6 +6,7 @@ $message = "";
 if (isset($_POST['submit'])) {
     $photo = new Photo();
     $photo->set_title($_POST['title']);
+    $photo->set_description($_POST['desc']);
     $photo->set_file($_FILES['file_upload']);
 
     if($photo->save()) {
@@ -46,7 +47,12 @@ if (isset($_POST['submit'])) {
                         <?php echo $message; ?>
                         <form action="upload.php" method="post" enctype="multipart/form-data">
                             <div class="form-group">
+                                <label>Title</label>
                                 <input type="text" name="title" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea name="desc" class="form-control"></textarea>
                             </div>
 
                             <div class="form-group">
