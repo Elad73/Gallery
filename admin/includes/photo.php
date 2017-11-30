@@ -8,7 +8,6 @@
 
 class Photo extends Db_object {
 
-    private   $src_domain = 'images';
     protected static $db_table = "photos";
     protected static $db_table_fields = array('title', 'description', 'filename', 'type', 'size', 'src');
     protected $id;
@@ -35,6 +34,11 @@ class Photo extends Db_object {
 
     );
 
+    public function photo_path() {
+
+        return $this->upload_directory . DS . $this->filename;
+    }
+
     /**
      * This  is passing $_FILES['uploaded_file'] as an argument
      * @param $file
@@ -57,7 +61,7 @@ class Photo extends Db_object {
             $this->set_tmp_path($file['tmp_name']);
             $this->set_type($file['type']);
             $this->set_size($file['size']);
-            $this->set_src($this->src_domain . DS . $name);
+            $this->set_src($this->photo_path());
         }
 
     }
