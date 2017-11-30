@@ -76,9 +76,9 @@ class Db_object {
     public static function find_by_id($id){
 
         $sql = "SELECT * FROM " . static::$db_table . " WHERE id = $id LIMIT 1";
-        $userArr = static::find_by_query($sql);
+        $resultArr = static::find_by_query($sql);
 
-        return (!empty($userArr)) ? $userArr[0] : false;
+        return (!empty($resultArr)) ? array_shift($resultArr) : false;
     }
 
     /**

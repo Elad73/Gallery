@@ -12,11 +12,10 @@ $photo = Photo::find_by_id($_GET['id']);
 
 if($photo) {
 
-    $photo->delete();
-} else {
-
-    redirect("photos.php");
+    $photo->delete_photo();
 }
+
+redirect("photos.php");
 
 ?>
 

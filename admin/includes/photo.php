@@ -62,6 +62,8 @@ class Photo extends Db_object {
             $this->set_type($file['type']);
             $this->set_size($file['size']);
             $this->set_src($this->photo_path());
+
+            return true;
         }
 
     }
@@ -70,6 +72,7 @@ class Photo extends Db_object {
 
         if ($this->get_id()) {
             $this->update();
+            return true;
         }
         else {
             if (!empty($this->errors)) {
@@ -98,8 +101,23 @@ class Photo extends Db_object {
             else {
                 //if nothing worked
                 $this->errors[] = "The file directory probably does not have permissions";
-                return;
+                return false;
             }
+        }
+
+        return false;
+    }
+
+    public function delete_photo() {
+
+        if($this->delete()) {
+
+            $target_path = SITE_ROOT . DS . 'admin' . DS . $this->photo_path();
+
+            return unlink($target_path) ? true : false;
+        }else {
+
+            return false;
         }
 
     }
