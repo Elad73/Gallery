@@ -2,12 +2,15 @@
 <?php if(!$session->is_signed_in()){redirect("login.php");} ?>
 <?php
 
+if(empty($_GET['id'])) {
 
+    redirect("photos.php");
+} else {
 
-if(isset($_POST['update'])) {
+    $photo = Photo::find_by_id($_GET['id']);
 
-    if(isset($_POST['id'])) {
-        $photo = Photo::find_by_id($_POST['id']);
+    if(isset($_POST['update'])) {
+
         if ($photo) {
             $photo->set_title($_POST['title']);
             $photo->set_caption($_POST['caption']);
@@ -17,18 +20,11 @@ if(isset($_POST['update'])) {
             $photo->save();
 
         }
+        else {
+
+            redirect("photos.php");
+        }
     }
-    else {
-
-        redirect("photos.php");
-    }
-}
-if(empty($_GET['id'])) {
-
-    redirect("photos.php");
-} else {
-
-    $photo = Photo::find_by_id($_GET['id']);
 }
 
 ?>
@@ -59,13 +55,17 @@ if(empty($_GET['id'])) {
                         <small>Subheading</small>
                     </h1>
 
-                    <form action="edit_photo.php" method="post">
+                    <form action="" method="post">
 
                         <div class="col-md-8">
 
                             <div class="form-group">
                                 <label for="title">Title</label>
                                 <input type="text" name="title" class="form-control" value="<?php echo $photo->get_title();?>">
+                            </div>
+
+                            <div class="form-group">
+                                <a class="thumbnail" href="#"><img src="<?php echo $photo->photo_path(); ?>" width="50%"></a>
                             </div>
 
                             <div class="form-group">
@@ -97,7 +97,6 @@ if(empty($_GET['id'])) {
                                         </p>
                                         <p class="text ">
                                             Photo Id: <span class="data photo_id_box"><?php echo $photo->get_id(); ?></span>
-                                            <input type="hidden" name="id" value="<?php echo $photo->get_id(); ?>">
                                         </p>
                                         <p class="text">
                                             Filename: <span class="data"><?php echo $photo->get_filename(); ?></span>
