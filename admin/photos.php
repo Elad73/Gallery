@@ -51,7 +51,7 @@ $photos = Photo::find_all();
                                     <td> <img src="<?php echo $photo->get_src(); ?>" width="100" height="62" alt="">
                                         <div class="pictures_link">
                                             <a href="delete_photo.php?id=<?php echo $photo->get_id();?>">Delete</a>
-                                            <a href="#">Edit</a>
+                                            <a href="edit_photo.php?id=<?php echo $photo->get_id();?>">Edit</a>
                                             <a href="#">View</a>
                                         </div>
 
