@@ -2,15 +2,33 @@
 <?php if(!$session->is_signed_in()){redirect("login.php");} ?>
 <?php
 
-if(isset($_GET['id'])) {
-
-    $photo = Photo::find_by_id($_GET['id']);
-}
 
 
 if(isset($_POST['update'])) {
 
-    echo "this is update";
+    if(isset($_POST['id'])) {
+        $photo = Photo::find_by_id($_POST['id']);
+        if ($photo) {
+            $photo->set_title($_POST['title']);
+            $photo->set_caption($_POST['caption']);
+            $photo->set_alternate_text($_POST['alternate_text']);
+            $photo->set_description($_POST['description']);
+
+            $photo->save();
+
+        }
+    }
+    else {
+
+        redirect("photos.php");
+    }
+}
+if(empty($_GET['id'])) {
+
+    redirect("photos.php");
+} else {
+
+    $photo = Photo::find_by_id($_GET['id']);
 }
 
 ?>
@@ -46,22 +64,23 @@ if(isset($_POST['update'])) {
                         <div class="col-md-8">
 
                             <div class="form-group">
-                                <input type="text" name="title" class="form-control">
+                                <label for="title">Title</label>
+                                <input type="text" name="title" class="form-control" value="<?php echo $photo->get_title();?>">
                             </div>
 
                             <div class="form-group">
                                 <label for="caption">Caption</label>
-                                <input type="text" name="caption" class="form-control">
+                                <input type="text" name="caption" class="form-control" value="<?php echo $photo->get_caption();?>">
                             </div>
 
                             <div class="form-group">
                                 <label for="alternate-Text">Alternate Text</label>
-                                <input type="text" name="alternate_text" class="form-control">
+                                <input type="text" name="alternate_text" class="form-control" value="<?php echo $photo->get_alternate_text();?>">
                             </div>
 
                             <div class="form-group">
                                 <label for="description">Description</label>
-                                <textarea class="form-control" name=description"" id="" cols="30" rows="10"></textarea>
+                                <textarea class="form-control" name="description" id="" cols="30" rows="10" ><?php echo $photo->get_description();?></textarea>
                             </div>
 
                         </div>
@@ -77,7 +96,8 @@ if(isset($_POST['update'])) {
                                             <span class="glyphicon glyphicon-calendar"></span> Uploaded on: April 22, 2030 @ 5:26
                                         </p>
                                         <p class="text ">
-                                            Photo Id: <span class="data photo_id_box"<?php echo $photo->get_id(); ?></span>
+                                            Photo Id: <span class="data photo_id_box"><?php echo $photo->get_id(); ?></span>
+                                            <input type="hidden" name="id" value="<?php echo $photo->get_id(); ?>">
                                         </p>
                                         <p class="text">
                                             Filename: <span class="data"><?php echo $photo->get_filename(); ?></span>

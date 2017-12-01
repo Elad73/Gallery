@@ -9,11 +9,13 @@
 class Photo extends Db_object {
 
     protected static $db_table = "photos";
-    protected static $db_table_fields = array('title', 'description', 'filename', 'type', 'size', 'src');
+    protected static $db_table_fields = array('title', 'caption', 'description', 'filename', 'alternate_text', 'type', 'size', 'src');
     protected $id;
     protected $title;
+    protected $caption;
     protected $description;
     protected $filename;
+    protected $alternate_text;
     protected $type;
     protected $size;
     protected $src;
@@ -131,12 +133,20 @@ class Photo extends Db_object {
         $this->title = $title;
     }
 
+    public function set_caption($caption){
+        $this->caption = $caption;
+    }
+
     public function set_description($description){
         $this->description = $description;
     }
 
     public function set_filename($filename){
         $this->filename = $filename;
+    }
+
+    public function set_alternate_text($alternate_text){
+        $this->alternate_text = $alternate_text;
     }
 
     public function set_type($type){
@@ -164,12 +174,20 @@ class Photo extends Db_object {
         return $this->title;
     }
 
+    public function get_caption(){
+        return $this->caption;
+    }
+
     public function get_description(){
         return $this->description;
     }
 
     public function get_filename(){
         return $this->filename;
+    }
+
+    public function get_alternate_text(){
+        return $this->alternate_text;
     }
 
     public function get_type(){
