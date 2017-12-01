@@ -48,7 +48,7 @@ $photos = Photo::find_all();
                                 <?php foreach ($photos as $photo) : ?>
                                 <tr>
                                     <!--<td> <img src="http://via.placeholder.com/140x100" alt=""></td>-->
-                                    <td> <img src="<?php echo $photo->get_src(); ?>" width="100" height="62" alt="">
+                                    <td> <img class="admin-photo-thumbnail" src="<?php echo $photo->get_src(); ?>" alt="">
                                         <div class="pictures_link">
                                             <a href="delete_photo.php?id=<?php echo $photo->get_id();?>">Delete</a>
                                             <a href="edit_photo.php?id=<?php echo $photo->get_id();?>">Edit</a>
