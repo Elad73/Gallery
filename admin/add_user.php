@@ -13,7 +13,9 @@ if(isset($_POST['create'])) {
         $user->set_password($_POST['password']);
         $user->set_username($_POST['username']);
 
-        $user->save();
+        $user->set_file($_FILES['user_image']);
+
+        $user->save_user_and_image();
     }
 
 }

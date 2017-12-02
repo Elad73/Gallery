@@ -17,6 +17,7 @@ class User extends Db_object {
     protected $password;
     protected $image_src;
 
+    protected $tmp_path;
     public $upload_directory = "images/users";
     public $image_placeholder = "http://placehold.it/100x100&text=image";
 
@@ -45,6 +46,10 @@ class User extends Db_object {
         $this->image_src = $image_src;
     }
 
+    public function set_tmp_path($tmp_path){
+        return $this->tmp_path = $tmp_path;
+    }
+
     public function get_id(){
         return $this->id;
     }
@@ -68,8 +73,85 @@ class User extends Db_object {
     public function get_image_src(){
         return $this->image_src;
     }
+
+    public function get_tmp_path(){
+        return $this->tmp_path;
+    }
     //endregion
 
+    public function photo_path($name) {
+
+        return $this->upload_directory . DS . $name;
+    }
+
+    /**
+     * This  is passing $_FILES['uploaded_file'] as an argument
+     * @param $file
+     * @return bool
+     */
+    public function set_file($file) {
+
+        if (empty($file) || !$file || !is_array($file)) {
+            $this->errors[] = "There was no file uploaded here";
+            return false;
+        }
+        elseif ($file['error'] != 0) {
+            $this->errors[] = $this->upload_errors_array[$file['error']];
+            return false;
+        }
+        else {
+
+            $name = basename($file['name']);
+            $this->set_image_src($this->photo_path($name));
+            $this->set_tmp_path($file['tmp_name']);
+            //$this->set_type($file['type']);
+            //$this->set_size($file['size']);
+            //$this->set_src($this->photo_path());
+
+            return true;
+        }
+
+    }
+
+    public function save_user_and_image() {
+
+        if ($this->get_id()) {
+            $this->update();
+            return true;
+        }
+        else {
+            if (!empty($this->errors)) {
+                return false;
+            }
+
+            if (empty($this->get_image_src() || empty($this->get_tmp_path()))) {
+                $this->errors[] = "the file was not available";
+                return false;
+            }
+
+            $target_path = SITE_ROOT . DS . 'admin' . DS . $this->get_image_src();
+
+            if (file_exists($target_path)) {
+                $this->errors[] = "The file {$this->get_image_src()} already exists";
+                return false;
+            }
+
+            if(move_uploaded_file($this->get_tmp_path(), $target_path)) {
+                if ($this->create()) {
+                    $tmp = $this->get_tmp_path();
+                    unset($tmp);
+                    return true;
+                }
+            }
+            else {
+                //if nothing worked
+                $this->errors[] = "The file directory probably does not have permissions";
+                return false;
+            }
+        }
+
+        return false;
+    }
 
 
     public function image_path_placeholder() {
