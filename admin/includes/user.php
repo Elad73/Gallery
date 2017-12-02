@@ -9,12 +9,16 @@
 class User extends Db_object {
 
     protected static $db_table = "users";
-    protected static $db_table_fields = array('username', 'password', 'first_name', 'last_name');
+    protected static $db_table_fields = array('username', 'password', 'first_name', 'last_name', 'image_src');
     protected $id;
     protected $username;
     protected $first_name;
     protected $last_name;
     protected $password;
+    protected $image_src;
+
+    public $upload_directory = "images/users";
+    public $image_placeholder = "http://placehold.it/100x100&text=image";
 
     //region Getters & Setters
     public function set_id($id){
@@ -37,6 +41,10 @@ class User extends Db_object {
         $this->password = $password;
     }
 
+    public function set_image_src($image_src){
+        $this->image_src = $image_src;
+    }
+
     public function get_id(){
         return $this->id;
     }
@@ -56,11 +64,18 @@ class User extends Db_object {
     public function get_password(){
         return $this->password;
     }
+
+    public function get_image_src(){
+        return $this->image_src;
+    }
     //endregion
 
 
 
+    public function image_path_placeholder() {
 
+        return empty($this->get_image_src()) ? $this->image_placeholder : $this->get_image_src();
+    }
 
 
     //ToDo: needs to understand why function query is failing with the escape cleaned...
@@ -79,6 +94,7 @@ class User extends Db_object {
         return (!empty($users_array)) ? array_shift($users_array) : false;
 
     }
+
 
 
 
