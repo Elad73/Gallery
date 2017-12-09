@@ -10,7 +10,7 @@ if(empty($_GET['id'])) {
 
 } else {
 
-    $user = User::find_by_id($_GET['id']);
+     $user = User::find_by_id($_GET['id']);
 
     if(isset($_POST['update'])) {
 
@@ -21,11 +21,20 @@ if(empty($_GET['id'])) {
             $user->set_password($_POST['password']);
             $user->set_username($_POST['username']);
 
-            $user->set_file($_FILES['user_image']);
+            //In case the thumbnail image (file) was not changed, then make an update
+            if(empty($_FILES['user_image']) || $_FILES['user_image']['error'] == UPLOAD_ERR_NO_FILE) {
 
-            $user->save_user_and_image();
+                $user->save();
+
+            } else {
+
+                $user->set_file($_FILES['user_image']);
+                $user->save_user_and_image();
+                //$user->save();
+                redirect("edit_user.php?id={$user->get_id()}");
+
+            }
         }
-
     }
 }
 
@@ -89,7 +98,7 @@ if(empty($_GET['id'])) {
 
                             <div class="form-group">
                                 <label for="password">Password</label>
-                                <input type="text" name="password" class="form-control" value="<?php echo $user->get_password(); ?>">
+                                <input type="password" name="password" class="form-control" value="<?php echo $user->get_password(); ?>">
                             </div>
 
                             <div class="form-group">

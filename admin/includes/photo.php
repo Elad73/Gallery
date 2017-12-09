@@ -22,7 +22,7 @@ class Photo extends Db_object {
 
     protected $tmp_path;
     public $upload_directory = "images/gallery";
-    public $errors = array();
+
 
 
     public function photo_path() {

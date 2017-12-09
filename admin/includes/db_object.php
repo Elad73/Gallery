@@ -8,7 +8,7 @@
 
 class Db_object {
 
-
+    public $errors = array();
     public  $upload_errors_array = array(
 
         UPLOAD_ERR_OK => "There is no error",
