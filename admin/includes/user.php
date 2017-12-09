@@ -101,8 +101,6 @@ class User extends Db_object {
         }
         else {
 
-            //$type = substr($file['type'], strpos($file['type'], '/') + 1);
-            //$name =  hash('md5', basename($file['name'])) . '.' . $type;
             $name =  date('Y_m_d_H_i_s_') . basename($file['name']);
             $this->set_image_src($this->photo_path($name));
             $this->set_tmp_path($file['tmp_name']);

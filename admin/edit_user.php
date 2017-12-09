@@ -21,7 +21,7 @@ if(empty($_GET['id'])) {
             $user->set_password($_POST['password']);
             $user->set_username($_POST['username']);
 
-            //In case the thumbnail image (file) was not changed, then make an update
+            //In case the thumbnail image (file) was not changed, then make an update, with out setting the file.
             if(empty($_FILES['user_image']) || $_FILES['user_image']['error'] == UPLOAD_ERR_NO_FILE) {
 
                 $user->save();
@@ -30,7 +30,6 @@ if(empty($_GET['id'])) {
 
                 $user->set_file($_FILES['user_image']);
                 $user->save_user_and_image();
-                //$user->save();
                 redirect("edit_user.php?id={$user->get_id()}");
 
             }
@@ -101,9 +100,23 @@ if(empty($_GET['id'])) {
                                 <input type="password" name="password" class="form-control" value="<?php echo $user->get_password(); ?>">
                             </div>
 
+
                             <div class="form-group">
+                                 <a  href="delete_user.php?id=<?php echo $user->get_id(); ?>" class="btn btn-danger">Delete</a>
                                 <input type="submit" value="Update" name="update" class="btn btn-primary pull-right">
                             </div>
+
+
+                            <!--
+                            <div class="info-box-footer clearfix">
+                                <div class="info-box-delete pull-left">
+                                    <a  href="delete_user.php?id=<?php echo $user->get_id(); ?>" class="btn btn-danger btn-lg ">Delete</a>
+                                </div>
+                                <div class="info-box-update pull-right ">
+                                    <input type="submit" name="update" value="Update" class="btn btn-primary btn-lg ">
+                                </div>
+                            </div>
+                            -->
 
                         </div>
 
