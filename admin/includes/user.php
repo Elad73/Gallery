@@ -113,7 +113,7 @@ class User extends Db_object {
 
     }
 
-    public function save_user_and_image() {
+    public function upload_photo() {
 
         if (!empty($this->errors)) {
             return false;
@@ -132,11 +132,10 @@ class User extends Db_object {
         }
 
         if(move_uploaded_file($this->get_tmp_path(), $target_path)) {
-            if ($this->save()) {
-                $tmp = $this->get_tmp_path();
-                unset($tmp);
-                return true;
-            }
+
+            $tmp = $this->get_tmp_path();
+            unset($tmp);
+            return true;
         }
         else {
             //if nothing worked
