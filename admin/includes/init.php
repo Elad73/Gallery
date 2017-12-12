@@ -18,3 +18,4 @@ require_once(INCLUDE_PATH . DS. "db_object.php");
 require_once(INCLUDE_PATH . DS. "user.php");
 require_once(INCLUDE_PATH . DS. "photo.php");
 require_once(INCLUDE_PATH . DS. "session.php");
+require_once(INCLUDE_PATH . DS. "comment.php");
