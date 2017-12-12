@@ -14,6 +14,7 @@ class Comment extends Db_object {
     protected $photo_id;
     protected $author;
     protected $body;
+    protected $createdDate;
 
     public static function create_comment($photo_id, $author="John Doe", $body="") {
 
@@ -44,6 +45,14 @@ class Comment extends Db_object {
             return self::find_by_query($sql);
     }
 
+    public static function find_by_photo_id($photo_id){
+
+        $sql = "SELECT * FROM " . static::$db_table . " WHERE photo_id = $photo_id ORDER BY createdDate DESC";
+        $resultArr = static::find_by_query($sql);
+
+        return (!empty($resultArr)) ? $resultArr : false;
+    }
+
 
     //region Getters & Setters
     public function set_id($id){
@@ -62,6 +71,10 @@ class Comment extends Db_object {
         $this->body = $body;
     }
 
+    public function set_created_date($created_date){
+        $this->createdDate = $created_date;
+    }
+
     public function get_id(){
         return $this->id;
     }
@@ -76,6 +89,10 @@ class Comment extends Db_object {
 
     public function get_body(){
         return $this->body;
+    }
+
+    public function get_created_date(){
+        return $this->createdDate;
     }
     //endregion
 
