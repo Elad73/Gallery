@@ -42,6 +42,7 @@ $photos = Photo::find_all();
                                     <th>Title</th>
                                     <th>Description</th>
                                     <th>Size</th>
+                                    <th>Comments</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -61,6 +62,11 @@ $photos = Photo::find_all();
                                     <td><?php echo $photo->get_title(); ?></td>
                                     <td><?php echo $photo->get_description(); ?></td>
                                     <td><?php echo $photo->get_size(); ?></td>
+                                    <td>
+                                        <div class="action_link">
+                                            <a href="comment_photo.php?id=<?php echo $photo->get_id();?>">Comments</a>
+                                        </div>
+                                    </td>
                                 </tr>
                                 <?php endforeach; ?>
 

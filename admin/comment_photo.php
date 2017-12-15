@@ -1,7 +1,15 @@
 <?php include("includes/header.php"); ?>
 <?php if(!$session->is_signed_in()){redirect("login.php");} ?>
 <?php
-$comments = Comment::find_all_ordered("createdDate", "DESC");
+
+if(empty($_GET['id'])) {
+
+    redirect("photos.php");
+}
+
+$photo_id = $_GET['id'];
+$photo = Photo::find_by_id($photo_id);
+$comments = Comment::find_the_comments($photo_id);
 
 ?>
 
@@ -28,7 +36,7 @@ $comments = Comment::find_all_ordered("createdDate", "DESC");
                 <div class="col-lg-12">
                     <h1 class="page-header">
                         Comments
-                        <small>Subheading</small>
+                        <small>for "<?php echo !empty($photo->get_title()) ? $photo->get_title() : "..."  . "\""?></small>
                     </h1>
                     <a href="add_comment.php" class="btn btn-primary">Add comment</a>
 
@@ -38,6 +46,7 @@ $comments = Comment::find_all_ordered("createdDate", "DESC");
                             <thead>
                             <tr>
                                 <th>Id</th>
+                                <th>Photo</th>
                                 <th>Photo Id</th>
                                 <th>Author</th>
                                 <th>Body</th>
@@ -52,6 +61,7 @@ $comments = Comment::find_all_ordered("createdDate", "DESC");
                                             <a href="delete_comment.php?id=<?php echo $comment->get_id();?>">Delete</a>
                                         </div>
                                     </td>
+                                    <td> <img class="admin-user-thumbnail user_image" src="<?php echo $photo->get_src(); ?>" alt=""></td>
                                     <td><?php echo $comment->get_photo_id(); ?></td>
                                     <td><?php echo $comment->get_author(); ?></td>
                                     <td><?php echo $comment->get_body(); ?></td>

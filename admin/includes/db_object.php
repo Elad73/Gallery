@@ -85,6 +85,12 @@ class Db_object {
         return static::find_by_query($sql);
     }
 
+    public static function find_all_ordered($order = 1, $direction = "ASC"){
+
+        $sql = "SELECT * FROM " . static::$db_table . " ORDER BY " . $order . " " . $direction;
+        return static::find_by_query($sql);
+    }
+
     public static function find_by_id($id){
 
         $sql = "SELECT * FROM " . static::$db_table . " WHERE id = $id LIMIT 1";
