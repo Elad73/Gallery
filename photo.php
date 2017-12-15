@@ -28,6 +28,7 @@ if(isset($_POST['submit'])) {
 }
 else {
 
+    //neutralizing these parameters incase there was not "submit"
     $author = "";
     $body = "";
 }
@@ -126,7 +127,7 @@ $comments = Comment::find_by_photo_id($photo->get_id());
                 <hr>
 
                 <!-- Preview Image -->
-                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+                <img class="img-responsive" src="<?php echo "admin/" . $photo->get_src(); ?>" alt="">
 
                 <hr>
 

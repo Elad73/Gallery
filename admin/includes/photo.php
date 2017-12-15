@@ -21,7 +21,7 @@ class Photo extends Db_object {
     protected $src;
 
     protected $tmp_path;
-    public $upload_directory = "images/gallery";
+    public $upload_directory = "images\\gallery";
 
 
 
@@ -47,7 +47,7 @@ class Photo extends Db_object {
         }
         else {
 
-            $name = basename($file['name']);
+            $name = date('Y_m_d_H_i_s_') . basename($file['name']);
             $this->set_filename($name);
             $this->set_tmp_path($file['tmp_name']);
             $this->set_type($file['type']);
