@@ -108,7 +108,7 @@
 
             </div> <!--First Row-->
 
-
+            <div class="row" id="donutchart" style="width: 900px; height: 500px;"></div>
 
 
         </div>
