@@ -19,16 +19,17 @@
           function drawChart() {
               var data = google.visualization.arrayToDataTable([
                   ['Task', 'Hours per Day'],
-                  ['Work',     11],
-                  ['Eat',      2],
-                  ['Commute',  2],
-                  ['Watch TV', 2],
-                  ['Sleep',    7]
+                  ['Views',     <?php echo $session->get_count(); ?>],
+                  ['Users',      <?php echo User::count_all(); ?>],
+                  ['Photos',  <?php echo Photo::count_all(); ?>],
+                  ['Comments', <?php echo Comment::count_all(); ?>]
               ]);
 
               var options = {
                   title: 'My Daily Activities',
-                  pieHole: 0.4,
+                  pieSliceText: 'label',
+                  pieHole: 0.5,
+                  backgroundColor: 'transparent'
               };
 
               var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
