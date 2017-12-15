@@ -63,8 +63,11 @@ $photos = Photo::find_all();
                                     <td><?php echo $photo->get_description(); ?></td>
                                     <td><?php echo $photo->get_size(); ?></td>
                                     <td>
+                                        <?php
+                                            $comments = Comment::find_the_comments($photo->get_id());
+                                        ?>
                                         <div class="action_link">
-                                            <a href="comment_photo.php?id=<?php echo $photo->get_id();?>">Comments</a>
+                                            <a href="comment_photo.php?id=<?php echo $photo->get_id();?>"><?php echo count($comments);;?></a>
                                         </div>
                                     </td>
                                 </tr>
