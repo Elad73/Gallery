@@ -2,12 +2,12 @@
 <?php if(!$session->is_signed_in()){redirect("login.php");} ?>
 <?php
 
-if(empty($_GET['id'])) {
+if(empty($_GET['photo_id'])) {
 
     redirect("photos.php");
 }
 
-$photo_id = $_GET['id'];
+$photo_id = $_GET['photo_id'];
 $photo = Photo::find_by_id($photo_id);
 $comments = Comment::find_the_comments($photo_id);
 
@@ -40,8 +40,11 @@ $comments = Comment::find_the_comments($photo_id);
                     </h1>
                     <a href="add_comment.php?photo_id=<?php echo $photo_id?>" class="btn btn-primary">Add comment</a>
 
-                    <div class="col-md-12">
 
+                    <div class="col-md-12">
+                        <div>
+                            <?php echo $session->get_message(); ?>
+                        </div>
                         <table class="table table-hover">
                             <thead>
                             <tr>
@@ -58,7 +61,7 @@ $comments = Comment::find_the_comments($photo_id);
                                 <tr>
                                     <td><?php echo $comment->get_id(); ?>
                                         <div class="action_link">
-                                            <a href="delete_comment.php?id=<?php echo $comment->get_id();?>">Delete</a>
+                                            <a href="delete_comment.php?id=<?php echo $comment->get_id();?>&photo_id=<?php echo $photo_id;?>">Delete</a>
                                         </div>
                                     </td>
                                     <td> <img class="admin-user-thumbnail user_image" src="<?php echo $photo->get_src(); ?>" alt=""></td>

@@ -63,12 +63,12 @@ $photos = Photo::find_all();
                                     <td><?php echo $photo->get_description(); ?></td>
                                     <td><?php echo $photo->get_size(); ?></td>
                                     <td>
-                                        <?php
-                                            $comments = Comment::find_the_comments($photo->get_id());
-                                        ?>
-                                        <div class="action_link">
-                                            <a href="comment_photo.php?id=<?php echo $photo->get_id();?>"><?php echo count($comments);;?></a>
-                                        </div>
+                                        <a href="comment_photo.php?photo_id=<?php echo $photo->get_id();?>">
+                                            <?php
+                                                $comments = Comment::find_the_comments($photo->get_id());
+                                                echo count($comments);
+                                            ?>
+                                        </a>
                                     </td>
                                 </tr>
                                 <?php endforeach; ?>
