@@ -20,9 +20,9 @@
               var data = google.visualization.arrayToDataTable([
                   ['Task', 'Hours per Day'],
                   ['Views',     <?php echo $session->get_count(); ?>],
-                  ['Users',      <?php echo User::count_all(); ?>],
-                  ['Photos',  <?php echo Photo::count_all(); ?>],
-                  ['Comments', <?php echo Comment::count_all(); ?>]
+                  ['Comments',      <?php echo Comment::count_all(); ?>],
+                  ['Users',  <?php echo User::count_all(); ?>],
+                  ['Photos', <?php echo photo::count_all(); ?>]
               ]);
 
               var options = {
