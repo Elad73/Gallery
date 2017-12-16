@@ -15,7 +15,7 @@ $photos = Photo::find_all();
 
                         <div class="col-xs-6 col-md-3">
                             <a class="thumbnail" href="">
-                                <img src="admin/<?php echo $photo->get_src(); ?>" alt="">
+                                <img class="img-responsive home_page_photo" src="admin/<?php echo $photo->get_src(); ?>" alt="">
 
 
                             </a>
