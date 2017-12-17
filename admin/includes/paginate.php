@@ -70,8 +70,41 @@ class Paginate {
     //endregion
 
 
+    public function next(){
 
+        return $this->getCurrentPage() + 1;
 
+    }
+
+    public function previous(){
+
+        return $this->getCurrentPage() - 1;
+
+    }
+
+    /*
+     * returns the total number of pages needed.
+     */
+    public function page_total(){
+
+        return ceil($this->getItemsTotalCount()/$this->getItemsPerPage());
+    }
+
+    public function has_previous(){
+
+        return $this->previous() >= 1 ? true : false;
+    }
+
+    public function has_next(){
+
+        return $this->next() <= $this->page_total() ? true : false;
+    }
+
+    public function offset(){
+
+        return ($this->getCurrentPage()-1) * $this->getItemsPerPage();
+
+    }
 
 
 }
