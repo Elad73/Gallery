@@ -9,7 +9,7 @@
 class Photo extends Db_object {
 
     protected static $db_table = "photos";
-    protected static $db_table_fields = array('title', 'caption', 'description', 'filename', 'alternate_text', 'type', 'size', 'src');
+    protected static $db_table_fields = array('title', 'caption', 'description', 'filename', 'alternate_text', 'type', 'size', 'src', 'createdDate', 'photoCreatedDate');
     protected $id;
     protected $title;
     protected $caption;
@@ -19,6 +19,8 @@ class Photo extends Db_object {
     protected $type;
     protected $size;
     protected $src;
+    protected $createdDate;
+    protected $photoCreatedDate;
 
     protected $tmp_path;
     public $upload_directory = "images\\gallery";
@@ -150,6 +152,14 @@ class Photo extends Db_object {
         $this->src = $src;
     }
 
+    public function set_createdDate($createdDate){
+        $this->createdDate = $createdDate;
+    }
+
+    public function set_photoCreatedDate($photoCreatedDate){
+        return $this->photoCreatedDate = $photoCreatedDate;
+    }
+
     public function set_tmp_path($tmp_path) {
         $this->tmp_path = $tmp_path;
 
@@ -194,6 +204,14 @@ class Photo extends Db_object {
     public function get_tmp_path() {
         return $this->tmp_path;
 
+    }
+
+    public function get_createdDate(){
+        return $this->createdDate;
+    }
+
+    public function get_photoCreatedDate(){
+        return $this->photoCreatedDate;
     }
     //endregion
 
