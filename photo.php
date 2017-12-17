@@ -40,6 +40,7 @@ $comments = Comment::find_by_photo_id($photo->get_id());
 
 <?php include("includes/header.php"); ?>
 
+        <div class="row">
             <!-- Blog Post Content Column -->
             <div class="col-lg-12">
 
@@ -132,6 +133,7 @@ $comments = Comment::find_by_photo_id($photo->get_id());
 
 
 </div> -->
+        </div>
 <!-- /.row -->
 
 <?php include("includes/footer.php"); ?>
