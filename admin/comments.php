@@ -28,7 +28,7 @@ $comments = Comment::find_all_ordered("createdDate", "DESC");
                 <div class="col-lg-12">
                     <h1 class="page-header">
                         Comments
-                        <small>Subheading</small>
+                        <small></small>
                     </h1>
                     <a href="add_comment.php" class="btn btn-primary">Add comment</a>
 
