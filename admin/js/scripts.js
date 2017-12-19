@@ -23,11 +23,35 @@ $(".modal_thumbnails").click(function () {
     image_href_splitted = image_href.split("/");
     image_name = image_href_splitted[image_href_splitted.length -1];
 
-    alert(image_name);
+});
+
+
+$("#set_user_image").click(function () {
+
+    $.ajax({
+
+        url: "includes/ajax_code.php",
+        data:{image_name: image_name, user_id: user_id},
+        type: "POST",
+        success:function(data){
+
+            //if there is no error we can continue
+            if(!data.error) {
+
+                alert(data);
+
+            }
+
+        }
+
+
+    })
+
 
 
 
 });
+
 
     /* tinymce.init({ selector:'textarea' });*/
 
