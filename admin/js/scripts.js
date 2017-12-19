@@ -6,8 +6,11 @@ $(document).ready(function() {
     var user_href;
     var user_href_splitted;
     var user_id;
+    var image_href;
+    var image_href_splitted;
+    var image_name;
 
-
+//enabling the button upon click and getting the userId
 $(".modal_thumbnails").click(function () {
 
     $("#set_user_image").prop('disabled', false);
@@ -15,7 +18,12 @@ $(".modal_thumbnails").click(function () {
     user_href = $("#user-id").prop('href');
     user_href_splitted = user_href.split("=");
     user_id = user_href_splitted[user_href_splitted.length -1];
-    alert(user_id);
+
+    image_href = $(this).prop("src");
+    image_href_splitted = image_href.split("/");
+    image_name = image_href_splitted[image_href_splitted.length -1];
+
+    alert(image_name);
 
 
 
