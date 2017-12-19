@@ -105,7 +105,7 @@ if(empty($_GET['id'])) {
 
 
                             <div class="form-group">
-                                 <a  href="delete_user.php?id=<?php echo $user->get_id(); ?>" class="btn btn-danger">Delete</a>
+                                 <a id="user-id"  href="delete_user.php?id=<?php echo $user->get_id(); ?>" class="btn btn-danger">Delete</a>
                                 <input type="submit" value="Update" name="update" class="btn btn-primary pull-right">
                             </div>
 
