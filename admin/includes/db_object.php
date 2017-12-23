@@ -22,7 +22,8 @@ class Db_object {
 
     );
 
-    public static function instantiation($row){
+    public static function
+    instantiation($row){
         $calling_class = get_called_class();
         $instance = new $calling_class;
 
@@ -116,6 +117,25 @@ class Db_object {
 
         return $the_object_array;
 
+    }
+
+    /**
+     * @param $sql
+     * @return array populated with the rows fetched from the db. not objects.
+     */
+    public static function find_by_direct_query($sql) {
+
+        global $database;
+
+        $result_set = $database->query($sql);
+        $the_object_array = array();
+
+        while($row = mysqli_fetch_array($result_set)){
+
+            $the_object_array[] = $row;
+        }
+
+        return $the_object_array;
     }
 
     public function save() {

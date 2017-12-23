@@ -1,7 +1,8 @@
 <?php require_once("init.php"); ?>
 <?php
 
-$photos = Photo::find_all();
+//$photos = Photo::find_all();
+$user_thumbnails = Helper::get_user_thumbnails();
 
 ?>
 
@@ -17,13 +18,15 @@ $photos = Photo::find_all();
                         <div class="thumbnails row">
 
                             <!-- PHP LOOP HERE CODE HERE-->
-                            <?php foreach ($photos as $photo): ?>
+                            <?php foreach ($user_thumbnails as $thumbnail): ?>
 
                             <div class="col-xs-2">
                                 <a role="checkbox" aria-checked="false" tabindex="0" id="" href="#" class="thumbnail">
-                                    <img class="modal_thumbnails img-responsive" src="<?php echo $photo->get_src(); ?>" data="<!-- PHP LOOP HERE CODE HERE-->">
+                                    <img class="modal_thumbnails img-responsive" src="<?php echo "./images/" . $thumbnail['src']; ?>" data="<!-- PHP CODE HERE-->">
+                                    <label class="text-center" ><?php echo $thumbnail['name']; ?></label>
                                 </a>
                                 <div class="photo-id hidden"></div>
+
                             </div>
 
                             <?php endforeach; ?>

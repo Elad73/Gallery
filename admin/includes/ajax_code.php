@@ -1,8 +1,11 @@
 <?php require("init.php");
 
-if(isset($_POST['image_name'])) {
+$user = new User();
 
-    echo "This is data from the server YAYYYYYY";
+if(isset($_POST['image_src'])) {
+
+    $user->ajax_save_user_image($_POST['image_src'], $_POST['user_id']);
+
 }
 
 

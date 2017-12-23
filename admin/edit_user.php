@@ -80,7 +80,13 @@ if(empty($_GET['id'])) {
                         <div class="col-md-6">
 
                             <div class="form-group">
-                                <input type="file" name="user_image">
+                                <input type="text" value="Choose Thumbnail" name="browse" data-toggle="modal" data-target="#photo-library" class="btn btn-primary pull-left">
+                            </div>
+
+                            <div class="form-group">
+                                <br/>
+                                <br/>
+                                <br/>
                             </div>
 
                             <div class="form-group">
