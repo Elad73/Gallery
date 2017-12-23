@@ -16,7 +16,7 @@ if(isset($_POST['thumbnail_name']) && isset($_POST['user_id'])) {
 
 if(isset($_POST['thumbnail_id'])) {
 
-    echo $_POST['thumbnail_id'];
+    Helper::display_sidebar_data($_POST['thumbnail_id']);
 
 }
 
