@@ -30,7 +30,7 @@ $(".modal_thumbnails").click(function () {
 
 });
 
-/*
+
 $("#set_user_image").click(function () {
 
     $.ajax({
@@ -40,11 +40,9 @@ $("#set_user_image").click(function () {
         type: "POST",
         success:function(data){
 
-            //alert(image_name);
             //if there is no error we can continue
             if(!data.error) {
 
-                alert(data);
 
             }
 
@@ -55,7 +53,7 @@ $("#set_user_image").click(function () {
 
 });
 
-*/
+
     /* tinymce.init({ selector:'textarea' });*/
 
 });

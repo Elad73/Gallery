@@ -42,8 +42,8 @@ class User extends Db_object {
         $this->password = $password;
     }
 
-    public function set_image_src($image_src){
-        $this->image_src = $image_src;
+    public function set_image_src($image_name){
+        $this->image_src = $this->photo_path($image_name);
     }
 
     public function set_tmp_path($tmp_path){
@@ -102,7 +102,7 @@ class User extends Db_object {
         else {
 
             $name =  date('Y_m_d_H_i_s_') . basename($file['name']);
-            $this->set_image_src($this->photo_path($name));
+            $this->set_image_src($nameW);
             $this->set_tmp_path($file['tmp_name']);
             //$this->set_type();
             //$this->set_size($file['size']);
@@ -173,7 +173,7 @@ class User extends Db_object {
 
     public function ajax_save_user_image($user_image, $user_id) {
 
-        $this->set_image_src($this->photo_path($user_image));
+        $this->set_image_src($user_image);
         $this->set_id($user_id);
         $this->save();
 

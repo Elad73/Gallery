@@ -1,10 +1,12 @@
 <?php require("init.php");
 
-$user = new User();
 
-if(isset($_POST['image_name'])) {
+if(isset($_POST['image_name']) && isset($_POST['user_id'])) {
 
-    $user->ajax_save_user_image($_POST['image_name'], $_POST['user_id']);
+    $user = User::find_by_id((int)$_POST['user_id']);
+    $user->set_image_src($_POST['image_name']);
+    $user->update();
+    //$user->ajax_save_user_image($_POST['image_name'], $_POST['user_id']);
 
 }
 
