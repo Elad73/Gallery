@@ -22,7 +22,7 @@ $user_thumbnails = Helper::get_user_thumbnails();
 
                             <div class="col-xs-2">
                                 <a role="checkbox" aria-checked="false" tabindex="0" id="" href="#" class="thumbnail">
-                                    <img class="modal_thumbnails img-responsive" src="<?php echo "./images/" . $thumbnail['src']; ?>" data="<!-- PHP CODE HERE-->">
+                                    <img class="modal_thumbnails img-responsive" src="<?php echo "./images/" . $thumbnail['src']; ?>" data="<?php echo $thumbnail['id'] ?>">
                                     <label class="text-center" ><?php echo $thumbnail['name']; ?></label>
                                 </a>
                                 <div class="photo-id hidden"></div>

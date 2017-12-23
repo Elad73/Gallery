@@ -6,10 +6,10 @@ $(document).ready(function() {
     var user_href;
     var user_href_splitted;
     var user_id;
-    var image_href;
     var image_href_splitted;
     var image_src;
-    var image_name;
+    var thumbnail_name;
+    var thumbnail_id;
 
 //enabling the button upon click and getting the userId
 $(".modal_thumbnails").click(function () {
@@ -24,17 +24,30 @@ $(".modal_thumbnails").click(function () {
         user_href_splitted = user_href.split("=");
         user_id = user_href_splitted[user_href_splitted.length - 1];
     }catch (err) {
-        //this is incase there is no user-id, which means on the add user page
+        //this is in case there is no user-id, which means on the add user page
     }
 
 
 
     image_src = $(this).prop("src");
     image_href_splitted = image_src.split("/");
-    image_name = image_href_splitted[image_href_splitted.length -1];
+    thumbnail_name = image_href_splitted[image_href_splitted.length -1];
+    thumbnail_id = $(this).attr("data");
 
     $("#user_thumbnail").attr('src',image_src);
-    $("#user_thumbnail_input").attr('value',image_name);
+    $("#user_thumbnail_input").attr('value',thumbnail_name);
+
+    $.ajax({
+
+        url: "includes/ajax_code.php",
+        data: {thumbnail_id: thumbnail_id},
+        type: "POST",
+        success:function(data) {
+            if(!data.error) {
+                $("#modal_sidebar").html(data);
+            }
+        }
+    });
 
 });
 
@@ -44,7 +57,7 @@ $("#set_user_image").click(function () {
     $.ajax({
 
         url: "includes/ajax_code.php",
-        data:{image_name: image_name, user_id: user_id},
+        data:{thumbnail_name: thumbnail_name, user_id: user_id},
         type: "POST",
         success:function(data){
 
