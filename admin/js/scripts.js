@@ -51,6 +51,7 @@ $("#set_user_image").click(function () {
             //if there is no error we can continue
             if(!data.error) {
 
+                $(".user_image_box a img").prop('src', data);
 
             }
 

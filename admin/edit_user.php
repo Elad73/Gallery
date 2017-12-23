@@ -69,7 +69,7 @@ if(empty($_GET['id'])) {
                         <small>ch..ch..ch..Changes...</small>
                     </h1>
 
-                    <div class="col-md-6">
+                    <div class="col-md-6 user_image_box">
                         <a href="#" data-toggle="modal" data-target="#photo-library" ><img id="user_thumbnail" class="img-responsive" src="<?php echo $user->get_image_src(); ?>" alt=""></a>
                     </div>
 
