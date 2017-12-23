@@ -9,6 +9,7 @@ $(document).ready(function() {
     var image_href;
     var image_href_splitted;
     var image_src;
+    var image_name;
 
 //enabling the button upon click and getting the userId
 $(".modal_thumbnails").click(function () {
@@ -22,21 +23,24 @@ $(".modal_thumbnails").click(function () {
     user_id = user_href_splitted[user_href_splitted.length -1];
 
     image_src = $(this).prop("src");
-    image_href_splitted = image_href.split("/");
+    image_href_splitted = image_src.split("/");
     image_name = image_href_splitted[image_href_splitted.length -1];
+
+    $("#user_thumbnail").attr('src',image_src);
 
 });
 
-
+/*
 $("#set_user_image").click(function () {
 
     $.ajax({
 
         url: "includes/ajax_code.php",
-        data:{image_src: image_src, user_id: user_id},
+        data:{image_name: image_name, user_id: user_id},
         type: "POST",
         success:function(data){
 
+            //alert(image_name);
             //if there is no error we can continue
             if(!data.error) {
 
@@ -46,15 +50,12 @@ $("#set_user_image").click(function () {
 
         }
 
-
     })
-
-
 
 
 });
 
-
+*/
     /* tinymce.init({ selector:'textarea' });*/
 
 });

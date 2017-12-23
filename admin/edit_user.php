@@ -71,7 +71,7 @@ if(empty($_GET['id'])) {
 
                     <div class="col-md-6">
 
-                        <a href="#" data-toggle="modal" data-target="#photo-library" ><img class="img-responsive" src="<?php echo $user->get_image_src(); ?>" alt=""></a>
+                        <a href="#" data-toggle="modal" data-target="#photo-library" ><img id="user_thumbnail" class="img-responsive" src="<?php echo $user->get_image_src(); ?>" alt=""></a>
 
                     </div>
 

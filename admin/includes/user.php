@@ -18,7 +18,7 @@ class User extends Db_object {
     protected $image_src;
 
     protected $tmp_path;
-    public $upload_directory = "images\\users";
+    public $upload_directory = "images\\users_thumbnails";
     public $image_placeholder = "http://placehold.it/100x100&text=image";
 
     //region Getters & Setters
