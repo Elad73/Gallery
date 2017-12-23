@@ -70,9 +70,7 @@ if(empty($_GET['id'])) {
                     </h1>
 
                     <div class="col-md-6">
-
                         <a href="#" data-toggle="modal" data-target="#photo-library" ><img id="user_thumbnail" class="img-responsive" src="<?php echo $user->get_image_src(); ?>" alt=""></a>
-
                     </div>
 
                     <form action="" method="post" enctype="multipart/form-data">
@@ -84,7 +82,6 @@ if(empty($_GET['id'])) {
                             </div>
 
                             <div class="form-group">
-                                <br/>
                                 <br/>
                                 <br/>
                             </div>

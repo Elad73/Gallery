@@ -1,4 +1,5 @@
 <?php include("includes/header.php"); ?>
+<?php include("includes/photo_library_modal.php"); ?>
 <?php if(!$session->is_signed_in()){redirect("login.php");} ?>
 <?php
 
@@ -11,12 +12,10 @@ if(isset($_POST['create'])) {
         $user->set_first_name($_POST['first_name']);
         $user->set_last_name($_POST['last_name']);
         $user->set_password($_POST['password']);
-        $user->set_username($_POST['username']);
+        $user->set_image_src($_POST['user_thumbnail_input']);
 
-        $user->set_file($_FILES['user_image']);
-
-        $user->upload_photo();
         $user->save();
+        //redirect("admin/users.php"); Todo: find out why this redirect is not working
     }
 
 }
@@ -54,8 +53,24 @@ if(isset($_POST['create'])) {
 
                         <div class="col-md-6 col-md-offset-3">
 
+                            <!--
                             <div class="form-group">
                                 <input type="file" name="user_image">
+                            </div>
+                            -->
+
+                            <div class="col-md-6">
+                                <a href="#" data-toggle="modal" data-target="#photo-library" ><img id="user_thumbnail" class="img-responsive" src="" alt=""></a>
+                                <input type="hidden" value="" id="user_thumbnail_input" name="user_thumbnail_input">
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" value="Choose Thumbnail" name="browse" data-toggle="modal" data-target="#photo-library" class="btn btn-primary pull-left">
+                            </div>
+
+                            <div class="form-group">
+                                <br/>
+                                <br/>
                             </div>
 
                             <div class="form-group">

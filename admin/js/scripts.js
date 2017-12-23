@@ -17,16 +17,24 @@ $(".modal_thumbnails").click(function () {
     $("#set_user_image").prop('disabled', false);
 
     $(this).addClass('selected');
-    //extracting the userId from the delete button on the "edit_user" page
-    user_href = $("#user-id").prop('href');
-    user_href_splitted = user_href.split("=");
-    user_id = user_href_splitted[user_href_splitted.length -1];
+
+    try {
+        //extracting the userId from the delete button on the "edit_user" page
+        user_href = $("#user-id").prop('href');
+        user_href_splitted = user_href.split("=");
+        user_id = user_href_splitted[user_href_splitted.length - 1];
+    }catch (err) {
+        //this is incase there is no user-id, which means on the add user page
+    }
+
+
 
     image_src = $(this).prop("src");
     image_href_splitted = image_src.split("/");
     image_name = image_href_splitted[image_href_splitted.length -1];
 
     $("#user_thumbnail").attr('src',image_src);
+    $("#user_thumbnail_input").attr('value',image_name);
 
 });
 

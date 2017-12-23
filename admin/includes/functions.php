@@ -28,6 +28,6 @@ function classAutoLoader($class){
 spl_autoload_register('classAutoLoader');
 
 function redirect($location){
-    echo "inside redirect";
+
     header("Location: {$location}");
 }
