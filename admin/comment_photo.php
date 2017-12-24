@@ -38,6 +38,9 @@ $comments = Comment::find_the_comments($photo_id);
                         Comments
                         <small>for "<?php echo !empty($photo->get_title()) ? $photo->get_title() : "..."  . "\""?></small>
                     </h1>
+                    <p class="bg-success">
+                        <?php echo $message; ?>
+                    </p>
                     <a href="add_comment.php?photo_id=<?php echo $photo_id?>" class="btn btn-primary">Add comment</a>
 
 
