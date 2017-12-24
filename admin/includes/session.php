@@ -16,9 +16,6 @@ class Session{
     private $count;
 
 
-
-
-
     function __construct(){
 
         session_start();
@@ -61,11 +58,14 @@ class Session{
     }
     //endregion
 
+
+
     public function visitor_count() {
 
         if(isset($_SESSION['count'])){
 
-            return $this->set_count($_SESSION['count']++);
+            $this->set_count($_SESSION['count']++);
+            return $this->get_count();
         }
         else {
 
@@ -73,7 +73,7 @@ class Session{
         }
     }
 
-    public function check_message() {
+    private function check_message() {
         if(isset($_SESSION['message'])) {
             $this->message = $_SESSION['message'];
             unset($_SESSION['message']);
@@ -99,6 +99,7 @@ class Session{
     }
 
     public function is_signed_in() {
+
         return $this->get_signed_in();
     }
 
@@ -133,3 +134,4 @@ class Session{
 }
 
 $session = new Session();
+$message = $session->message();

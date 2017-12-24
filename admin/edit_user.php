@@ -27,13 +27,17 @@ if(empty($_GET['id'])) {
             if(empty($_FILES['user_image']) || $_FILES['user_image']['error'] == UPLOAD_ERR_NO_FILE) {
 
                 $user->save();
+                $session->message("The user has been updated");
+                redirect("users.php");
 
             } else {
 
                 $user->set_file($_FILES['user_image']);
                 $user->upload_photo();
                 $user->save();
-                redirect("edit_user.php?id={$user->get_id()}");
+                //redirect("edit_user.php?id={$user->get_id()}");
+                $session->message("The user has been updated");
+                redirect("users.php");
 
             }
         }
