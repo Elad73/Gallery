@@ -11,6 +11,7 @@ defined('SITE_ROOT') ? null : define('SITE_ROOT', 'E:' . DS . 'Development_proje
 defined('INCLUDE_PATH') ? null : define('INCLUDE_PATH', 'E:' . DS . 'Development_projects' . DS . 'wamp64' . DS . 'www' . DS . 'udemy' . DS . 'udemy_oop' . DS . 'gallery' . DS . 'admin' . DS . 'includes');
 defined('ADMIN_PATH') ? null : define('ADMIN_PATH', 'E:' . DS . 'Development_projects' . DS . 'wamp64' . DS . 'www' . DS . 'udemy' . DS . 'udemy_oop' . DS . 'gallery' . DS . 'admin');
 
+ob_start();
 
 require_once(INCLUDE_PATH . DS. "functions.php");
 require_once(INCLUDE_PATH . DS. "config.php");

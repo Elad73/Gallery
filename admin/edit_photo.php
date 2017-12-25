@@ -19,12 +19,11 @@ if(empty($_GET['id'])) {
             $photo->set_description($_POST['description']);
 
             $photo->save();
+            $session->message("The photo has been updated");
 
         }
-        else {
 
-            redirect("photos.php");
-        }
+        redirect("photos.php");
     }
 }
 

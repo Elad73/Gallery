@@ -5,6 +5,7 @@
 $message = "";
 if (isset($_FILES['file'])) {
     $photo = new Photo();
+    $photo->set_user_id($_SESSION['user_id']);
     $photo->set_title($_POST['title']);
     $photo->set_description($_POST['desc']);
     $photo->set_file($_FILES['file']);

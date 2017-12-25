@@ -9,8 +9,9 @@
 class Photo extends Db_object {
 
     protected static $db_table = "photos";
-    protected static $db_table_fields = array('title', 'caption', 'description', 'filename', 'alternate_text', 'type', 'size', 'src');
+    protected static $db_table_fields = array( 'user_id', 'title', 'caption', 'description', 'filename', 'alternate_text', 'type', 'size', 'src');
     protected $id;
+    protected $user_id;
     protected $title;
     protected $caption;
     protected $description;
@@ -120,6 +121,10 @@ class Photo extends Db_object {
         $this->id = $id;
     }
 
+    public function set_user_id($user_id){
+        $this->user_id = $user_id;
+    }
+
     public function set_title($title){
         $this->title = $title;
     }
@@ -167,6 +172,10 @@ class Photo extends Db_object {
 
     public function get_id(){
         return $this->id;
+    }
+
+    public function get_user_id(){
+        return $this->user_id;
     }
 
     public function get_title(){

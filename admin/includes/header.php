@@ -1,5 +1,4 @@
 <?php require_once("init.php"); ?>
-<?php ob_start(); ?>
 
 <!DOCTYPE html>
 <html lang="en">
