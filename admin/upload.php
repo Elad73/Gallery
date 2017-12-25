@@ -43,24 +43,38 @@ if (isset($_POST['submit'])) {
                         <small></small>
                     </h1>
 
-                    <div class="col-md-6">
-                        <?php echo $message; ?>
-                        <form action="upload.php" method="post" enctype="multipart/form-data">
-                            <div class="form-group">
-                                <label>Title</label>
-                                <input type="text" name="title" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label>Description</label>
-                                <textarea name="desc" class="form-control"></textarea>
-                            </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <?php echo $message; ?>
+                            <form action="upload.php" method="post" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label>Title</label>
+                                    <input type="text" name="title" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <textarea name="desc" class="form-control"></textarea>
+                                </div>
 
-                            <div class="form-group">
-                                <input type="file" name="file_upload">
-                            </div>
+                                <div class="form-group">
+                                    <input type="file" name="file_upload">
+                                </div>
 
-                            <input type="submit" name="submit">
-                        </form>
+                                <input type="submit" name="submit">
+                            </form>
+                        </div>
+                    </div> <!--End of Row-->
+                    <div class="row">
+
+                        <div class="col-lg-12">
+
+                            <form action="upload.php" class="dropzone">
+
+
+                            </form>
+
+                        </div>
+
                     </div>
 
                 </div>
