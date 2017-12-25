@@ -98,3 +98,7 @@
     position: fixed !important;
 
 }
+
+.bottom_margin {
+    margin-bottom: 60px;
+}

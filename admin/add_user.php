@@ -65,13 +65,8 @@ if(isset($_POST['create'])) {
                                 <input type="hidden" value="" id="user_thumbnail_input" name="user_thumbnail_input">
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group bottom_margin">
                                 <input type="text" value="Choose Thumbnail" name="browse" data-toggle="modal" data-target="#photo-library" class="btn btn-primary pull-left">
-                            </div>
-
-                            <div class="form-group">
-                                <br/>
-                                <br/>
                             </div>
 
                             <div class="form-group">

@@ -85,9 +85,9 @@ if(empty($_GET['id'])) {
                                 <input type="text" value="Choose Thumbnail" name="browse" data-toggle="modal" data-target="#photo-library" class="btn btn-primary pull-left">
                             </div>
 
-                            <div class="form-group">
-                                <br/>
-                                <br/>
+                            <div>
+                                <br>
+                                <br>
                             </div>
 
                             <div class="form-group">
