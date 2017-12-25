@@ -78,6 +78,15 @@ $("#set_user_image").click(function () {
 
     /* tinymce.init({ selector:'textarea' });*/
 
+/********************************Edit photo sidebar**********************************/
+$(".info-box-header").click(function() {
+
+    $(".inside").slideToggle("slow");
+
+    $("#toggle").toggleClass("glyphicon-menu-down glyphicon , glyphicon-menu-up glyphicon");
+
+    });
+
 });
 
 
