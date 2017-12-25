@@ -53,7 +53,7 @@ $photos = Photo::find_all();
                                     <!--<td> <img src="http://via.placeholder.com/140x100" alt=""></td>-->
                                     <td> <img class="admin-photo-thumbnail" src="<?php echo $photo->get_src(); ?>" alt="">
                                         <div class="action_link">
-                                            <a href="delete_photo.php?id=<?php echo $photo->get_id();?>">Delete</a>
+                                            <a class="delete_link" href="delete_photo.php?id=<?php echo $photo->get_id();?>">Delete</a>
                                             <a href="edit_photo.php?id=<?php echo $photo->get_id();?>">Edit</a>
                                             <a href="../photo.php?id=<?php echo $photo->get_id(); ?>">View</a>
                                         </div>
