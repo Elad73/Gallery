@@ -190,6 +190,11 @@ class User extends Db_object {
     }
 
 
+    public function get_photos() {
 
+        return Photo::find_by_query("SELECT * FROM photos WHERE user_id = " . $this->get_id());
+
+
+    }
 
 } //End of the Class
