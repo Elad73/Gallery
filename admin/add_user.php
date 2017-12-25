@@ -15,7 +15,8 @@ if(isset($_POST['create'])) {
         $user->set_image_src($_POST['user_thumbnail_input']);
 
         $user->save();
-        //redirect("admin/users.php"); Todo: find out why this redirect is not working
+        $session->message("The {$user->get_username()} had been added");
+        redirect("users.php");
     }
 
 }
